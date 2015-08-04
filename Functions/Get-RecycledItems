@@ -1,5 +1,5 @@
 Function Get-RecycledItems {
 $ShellApp = New-Object -ComObject Shell.Application
 $RecycleBin = $ShellApp.NameSpace(0x0a)
-$RecycleBin.Items() 
+$RecycleBin.Items() | Select-Object NAme, Path, @{Name="Directory";Expression={$_.IsFolder}}, ModifyDate, Size, Type
 }
